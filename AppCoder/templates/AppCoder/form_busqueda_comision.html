@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUSQUEDA_COMI</title>
+</head>
+<body>
+
+    <h1>FORMULARIO DE BUSQUEDA DE COMISION</h1>
+
+    {% if formulario.error %}
+        <p style = "color: red">Hay algo mal en el formulario</p>
+    {% endif %}
+
+   
+
+    <form action="{% url 'buscar' %}" method="GET"> <!-- cuando presione el boton buscar, va a mandar un requet GET a la url indicada aqui, por eso creo otra vista para esa url-->
+
+        <input type="number" name="comision" id="comision"> 
+
+        <input type="submit" value="Buscar"> 
+
+
+    </form>
+
+    {% if error %}
+    <p style="color:red">{{ error }}</p>
+    {% endif %}
+
+ <!--   
+
+    {% if cursos %}
+
+        <h1>RESULTADOS DE LA BUSQUEDA</h1>
+
+        {% for curso in cursos%}
+            <p>{{ curso.nombre }}</p>
+            <p>{{ curso.comision }}</p>
+                <br>
+
+        {% endfor %}
+
+    {% else %}
+        <p>No hay cursos con esa comision</p>
+    {% endif %}
+-->
+</body>
+</html>
+

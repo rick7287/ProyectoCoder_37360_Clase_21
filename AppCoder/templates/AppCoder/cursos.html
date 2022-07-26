@@ -2,19 +2,37 @@
 
 {% load static %}
 
+{% block titulo_pagina %}
 
-
-{% block titulo %}
-
-<h1 class="mb-5">CURSOS</h1>
+Cursos
 
 {% endblock %}
 
 
 
+{% block titulo %}
+
+<h1 class="mb-5">FORMULARIO DE CURSOS</h1>
+
+{% endblock %}
+
+
 
 {% block Contenido_que_cambia %}
 
-<h1>Que Cursada noooo</h1> 
+{% if formulario.error %}
+        <p style = "color: red">Hay algo mal en el formulario</p>
+    {% endif %}
+
+    <form action="{% url 'cursos' %}" method="POST">{% csrf_token %}
+
+        <table>
+            {{ formulario.as_table }} <!-- el contexto que le mandamos desde la vista, rederizalo como una tabla. Django hace todo el trabajo de render-->
+        </table>
+
+        <input type="submit" value="Enviar"> 
+
+
+    </form>
 
 {% endblock %}

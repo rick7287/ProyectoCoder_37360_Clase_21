@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+</head>
+<body>
+
+    <h1>RESULTADOS DE LA BUSQUEDA</h1>
+
+    {% if cursos %}
+
+        {% for curso in cursos%}
+            <p>{{ curso.nombre }}</p>
+            <p>{{ curso.comision }}</p>
+                <br>
+
+        {% endfor %}
+
+    {% else %}
+        <p>No hay cursos con esa comision</p>
+    {% endif %}
+    
+    
+</body>
+</html>

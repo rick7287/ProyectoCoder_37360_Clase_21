@@ -3,9 +3,17 @@
 {% load static %}
 
 
+{% block titulo_pagina %}
+
+Estudiantes
+
+{% endblock %}
+
+
+
 {% block titulo %}
 
-<h1 class="mb-5">ESTUDIANTES</h1>
+<h1 class="mb-5">FORMULARIO DE ESTUDIANTES</h1>
 
 {% endblock %}
 
@@ -14,6 +22,19 @@
 
 {% block Contenido_que_cambia %}
 
-<h1>Estudiambres mabien</h1> 
+{% if formulario.error %}
+        <p style = "color: red">Hay algo mal en el formulario</p>
+    {% endif %}
+
+    <form action="{% url 'estudiantes' %}" method="POST">{% csrf_token %}
+
+        <table>
+            {{ formulario.as_table }} <!-- el contexto que le mandamos desde la vista, rederizalo como una tabla. Django hace todo el trabajo de render-->
+        </table>
+
+        <input type="submit" value="Enviar"> 
+
+
+    </form>
 
 {% endblock %}

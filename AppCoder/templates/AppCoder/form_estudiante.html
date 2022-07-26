@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_ESTUDI</title>
+</head>
+<body>
+
+    <h1>FORMULARIO DE ESTUDIANTES</h1>
+
+    {% if formulario.error %}
+        <p style = "color: red">Hay algo mal en el formulario</p>
+    {% endif %}
+
+    <form action="{% url 'estudiante_form' %}" method="POST">{% csrf_token %}
+
+        <table>
+            {{ formulario.as_table }} <!-- el contexto que le mandamos desde la vista, rederizalo como una tabla. Django hace todo el trabajo de render-->
+        </table>
+
+        <input type="submit" value="Enviar"> 
+
+
+    </form>
+</body>
+</html>
